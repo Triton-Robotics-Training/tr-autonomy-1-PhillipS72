@@ -33,9 +33,8 @@ rclcpp::Subscription<std_msgs::msg::Float64MultiArray>::SharedPtr subscription_;
 rclcpp::Publisher<std_msgs::msg::Float64MultiArray>::SharedPtr publisher_;
 
 // your code here
-  RCLCPP_INFO(this->get_logger(), "Remove this statement from spin_slow_update.cpp");
-  // your code here
-}
+
+
 
 // your code here
 

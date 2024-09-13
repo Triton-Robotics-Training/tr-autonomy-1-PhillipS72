@@ -24,7 +24,7 @@ class SpinSolution : public rclcpp::Node {
 
   std::vector<double> prev_position_;
   std::vector<double> prev_velocity_;
-  rclcpp::Time last_update_;
+  rclcpp::Time last_position_update_time_;
 
     // your code here
 

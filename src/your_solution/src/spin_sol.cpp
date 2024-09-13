@@ -18,7 +18,7 @@ int main(int argc, char *argv[]) {
 SpinSolution::SpinSolution() : Node("spinsolution"),
   prev_position_(2, 0.0),
   prev_velocity_(2, 0.0),
-  last_update_(this->get_clock()->now())
+  last_position_update_time_(this->get_clock()->now())
 
 {
   subscription_pos_ = this->create_subscription<ArrayMsg>("/measuredpos", 10, std::bind(&SpinSolution::position_callback, this, std::placeholders::_1));
@@ -33,6 +33,7 @@ void SpinSolution::position_callback(const ArrayMsg::SharedPtr msg) {
 
   prev_position_[0] = msg->data[0];
   prev_position_[1] = msg->data[1];
+  last_position_update_time_ = this->get_clock()->now();
 
 }
 
@@ -48,17 +49,11 @@ void SpinSolution::timer_callback() {
 
   auto msg = ArrayMsg();
   auto now = this->get_clock()->now();
-  auto time_diff = (now - last_update_).seconds();
-  last_update_ = now;
+  auto time_diff = (now - last_position_update_time_).seconds();
 
   msg.data.resize(2);
   msg.data[0] = prev_position_[0] + time_diff * prev_velocity_[0];
   msg.data[1] = prev_position_[1] + time_diff * prev_velocity_[1];
 
   publisher_->publish(msg);
-}
-
-SpinSolution::SpinSolution() : Node("spinsolution") {
-  RCLCPP_INFO(this->get_logger(), "Remove this statement from spin_sol.cpp");
-  // your code here
 }
