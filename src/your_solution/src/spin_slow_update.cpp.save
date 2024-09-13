@@ -1,0 +1,4 @@
+#include "spin slow update.h"
+using std::placeholders::_1;
+
+int main(int argc, char *argv[])
