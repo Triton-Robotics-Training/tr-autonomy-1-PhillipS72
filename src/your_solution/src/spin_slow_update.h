@@ -10,10 +10,12 @@ class SlowSolution : public rclcpp::Node {
   SlowSolution();
  private:
   // your code here
+
   void topic_callback(const std_msgs::msg::Float64MultiArray::SharedPtr msg) const;
 
   rclcpp::Subscription<std_msgs::msg::Float64MultiArray>::SharedPtr subscription_;
   rclcpp::Publisher<std_msgs::msg::Float64MultiArray>::SharedPtr publisher_;
+
 };
 
 #endif //YOUR_SOLUTION_SRC_SPIN_SLOW_UPDATE_H_

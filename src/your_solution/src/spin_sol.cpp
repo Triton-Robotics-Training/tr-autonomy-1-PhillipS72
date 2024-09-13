@@ -1,8 +1,10 @@
 #include "spin_sol.h"
+
 #include <chrono>
 
 using namespace std::chrono_literals;
 using std::placeholders::_1;
+
 
 int main(int argc, char *argv[]) {
   rclcpp::init(argc, argv);
@@ -12,6 +14,7 @@ int main(int argc, char *argv[]) {
 }
 
 //your code here
+
 SpinSolution::SpinSolution() : Node("spinsolution"),
   prev_position_(2, 0.0),
   prev_velocity_(2, 0.0),
@@ -55,3 +58,7 @@ void SpinSolution::timer_callback() {
   publisher_->publish(msg);
 }
 
+SpinSolution::SpinSolution() : Node("spinsolution") {
+  RCLCPP_INFO(this->get_logger(), "Remove this statement from spin_sol.cpp");
+  // your code here
+}

@@ -1,5 +1,7 @@
 #include "spin_slow_update.h"
+
 using std::placeholders::_1;
+
 
 int main(int argc, char *argv[]) {
   rclcpp::init(argc, argv);
@@ -9,6 +11,7 @@ int main(int argc, char *argv[]) {
 }
 
 SlowSolution::SlowSolution() : Node("slowsolution") {
+
   subscription_ = this->create_subscription<std_msgs::msg::Float64MultiArray>("measuredpos", 10, std::bind(&SlowSolution::topic_callback, this, _1));
   publisher_ = this->create_publisher<std_msgs::msg::Float64MultiArray>("predictedpos", 10);
   // your code here
@@ -30,3 +33,9 @@ rclcpp::Subscription<std_msgs::msg::Float64MultiArray>::SharedPtr subscription_;
 rclcpp::Publisher<std_msgs::msg::Float64MultiArray>::SharedPtr publisher_;
 
 // your code here
+  RCLCPP_INFO(this->get_logger(), "Remove this statement from spin_slow_update.cpp");
+  // your code here
+}
+
+// your code here
+

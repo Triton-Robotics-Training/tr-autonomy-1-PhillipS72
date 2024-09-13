@@ -3,7 +3,9 @@
 
 #include "rclcpp/rclcpp.hpp"
 #include "std_msgs/msg/float64_multi_array.hpp"
+
 #include <vector>
+
 
 using ArrayMsg = std_msgs::msg::Float64MultiArray;
 
@@ -23,6 +25,9 @@ class SpinSolution : public rclcpp::Node {
   std::vector<double> prev_position_;
   std::vector<double> prev_velocity_;
   rclcpp::Time last_update_;
+
+    // your code here
+
 };
 
 #endif //YOUR_SOLUTION_SRC_SPIN_SOL_H_
